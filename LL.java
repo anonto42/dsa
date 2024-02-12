@@ -1,16 +1,24 @@
 public class LL {
 
     Node head;
+    private int size;
+
+    LL(){
+        this.size = 0;
+    }
 
     // node class
     class Node{
+
         String data;
         Node next;
         
         Node(String data){
             this.data = data;
             this.next = null;
+            size ++;
         }
+
     }
     // add first
     public void addFirst(String data){
@@ -54,6 +62,7 @@ public class LL {
             System.out.println("List is empty");
             return;
         }
+        size --;
         head = head.next;
     }
     // delet last 
@@ -61,12 +70,11 @@ public class LL {
         if (head == null) {
             System.out.println("List is empty");
             return;
-        }
+        }size --;
         if (head.next == null) {
             head = null;
             return;
         }
-
         Node secodLast = head;
         Node lastNode = head.next;
         while(lastNode.next != null){
@@ -74,6 +82,9 @@ public class LL {
             secodLast = secodLast.next;
         }
         secodLast.next = null;
+    }
+    public int getSize(){
+        return size;
     }
         public static void main(String[] args) {
             LL linkLList = new LL();
@@ -88,6 +99,7 @@ public class LL {
             linkLList.deleteLast();
             linkLList.print();
 
+            System.out.println(linkLList.getSize());
     }
 }
 
