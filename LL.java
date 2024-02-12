@@ -30,7 +30,7 @@ public class LL {
             return;
         }
         Node currNode = head;
-        while (currNode != null ) {
+        while (currNode.next != null ) {
             currNode = currNode.next;
         }
         currNode.next = newNode;
@@ -38,7 +38,7 @@ public class LL {
     // print linklist 
     public void print(){
         if (head == null) {
-            System.out.println("List is empty");
+            System.out.print("List is empty");
             return;
         }
         Node curNode = head;
@@ -48,14 +48,45 @@ public class LL {
         }
         System.out.println("null");
     }
+    // delet first 
+    public void deleteFirst(){
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+        head = head.next;
+    }
+    // delet last 
+    public void deleteLast(){
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+        if (head.next == null) {
+            head = null;
+            return;
+        }
 
-    public static void main(String[] args) {
-        LL linkLList = new LL();
-        linkLList.addFirst("a");
-        linkLList.addFirst("n");
-        linkLList.addFirst("o");
-        linkLList.addLast("n");
-        linkLList.addLast("t");
+        Node secodLast = head;
+        Node lastNode = head.next;
+        while(lastNode.next != null){
+            lastNode = lastNode.next;
+            secodLast = secodLast.next;
+        }
+        secodLast.next = null;
+    }
+        public static void main(String[] args) {
+            LL linkLList = new LL();
+            linkLList.addFirst("a");
+            linkLList.addFirst("n");
+            linkLList.addFirst("o");
+            linkLList.addLast("n");
+            linkLList.addLast("t");
+            linkLList.print();
+            linkLList.deleteFirst();
+            linkLList.print();
+            linkLList.deleteLast();
+            linkLList.print();
 
     }
 }
