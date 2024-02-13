@@ -51,7 +51,7 @@ public class LL {
         }
         Node curNode = head;
         while (curNode != null){
-            System.out.println(curNode.data + " ");
+            System.out.print(curNode.data + " ->");
             curNode = curNode.next;
         }
         System.out.println("null");
@@ -105,7 +105,15 @@ public class LL {
         head.next = null;
         head = prevNode;
     }
-
+    public Node revarceRecursive(Node head){
+        if (head == null || head.next == null) {
+            return head;
+        }
+        Node newHead = revarceRecursive(head.next);
+        head.next.next = head;
+        head.next = null;
+        return newHead;
+    }
         public static void main(String[] args) {
             LL linkLList = new LL();
             linkLList.addFirst("a");
@@ -113,11 +121,11 @@ public class LL {
             linkLList.addFirst("o");
             linkLList.addLast("n");
             linkLList.addLast("t");
-            // linkLList.print();
+            linkLList.print();
             // linkLList.deleteFirst();
             // linkLList.print();
             // linkLList.deleteLast();
-            // linkLList.print();
-
+            linkLList.head = linkLList.revarceRecursive(linkLList.head);
+            linkLList.print();
     }
 }
