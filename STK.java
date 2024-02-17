@@ -11,6 +11,15 @@ public class STK {
         pushAtBottom(data, s);
         s.push(top);
     }
+     
+    public static void revetce(Stack<Integer> s){
+        if(s.isEmpty()){
+            return;
+        }
+        int top = s.pop();
+        revetce(s);
+        pushAtBottom(top, s);
+    }
 
     public static void main(String[] args) {
 
@@ -21,7 +30,9 @@ public class STK {
         list.add(4);
         list.add(5);
 
-        pushAtBottom(8, list);
+        // pushAtBottom(8, list);
+
+        revetce(list);
 
         while (!list.isEmpty()) {
             System.out.println(list.peek());
